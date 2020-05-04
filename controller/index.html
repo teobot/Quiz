@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div class="container" id="main_control" style="">
+        <div class="display-4">Game Status: {{game_status}}
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">player</th>
+                            <th scope="col">score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="player in players">
+                            <td>{{player.player_name}}</td>
+                            <td>{{player.player_score}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col ">Game action</th>
+                            <th scope="col ">Confirm action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- Look for players -->
+                            <td>Look For Players</td>
+                            <td><button class="btn btn-success btn-sm" v-on:click="search_for_players()">Search</button></td>
+                        </tr>
+                        <tr>
+                            <!-- Start the game -->
+                            <td>Start Game</td>
+                            <td><button class="btn btn-warning btn-sm" v-on:click="start_game()">Start</button></td>
+                        </tr>
+                        <tr>
+                            <!-- End the game -->
+                            <td>End Game</td>
+                            <td><button class="btn btn-danger btn-sm" v-on:click="end_game()">End</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js " integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js " integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 " crossorigin="anonymous "></script>
+    <!-- Insert vueJs scripts here -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js "></script>
+
+    <script src="../scripts/GLOBALS.js "></script>
+    <script src="./scripts/controllerVue.js "></script>
+</body>
+
+</html>
