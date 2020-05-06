@@ -13,7 +13,8 @@
 
 <body>
     <div class="container" id="main_control" style="">
-        <div class="display-4">Game Status: {{game_status}}
+        <div class="display-4">
+            Game Status: {{game_status}}
         </div>
         <div class="row">
             <div class="col">
@@ -44,29 +45,48 @@
                         <tr>
                             <!-- Look for players -->
                             <td>Look For Players</td>
-                            <td><button class="btn btn-success btn-sm" v-on:click="search_for_players()">Search</button></td>
+                            <td><button class="btn btn-success btn-sm w-100" v-on:click="search_for_players()">Search</button></td>
                         </tr>
                         <tr>
                             <!-- Start the game -->
                             <td>Start Game</td>
-                            <td><button class="btn btn-warning btn-sm" v-on:click="start_game()">Start</button></td>
+                            <td><button class="btn btn-warning btn-sm w-100" v-on:click="start_game()">Start Game</button></td>
                         </tr>
                         <tr>
                             <!-- End the game -->
                             <td>End Game</td>
-                            <td><button class="btn btn-danger btn-sm" v-on:click="end_game()">End</button></td>
+                            <td><button class="btn btn-danger btn-sm w-100" v-on:click="end_game()">End Game</button></td>
+                        </tr>
+                        <tr>
+                            <!-- Toggle between questions -->
+                            <td><button class="btn btn-primary btn-sm w-100" v-on:click="previous_question()">Previous Question</button></td>
+                            <td><button class="btn btn-primary btn-sm w-100" v-on:click="next_question()">Next Question</button></td>
+                        </tr>
+                        <tr>
+                            <!-- Reset the players -->
+                            <td>Reset Players</td>
+                            <td><button class="btn btn-primary btn-sm w-100" v-on:click="reset_players()">Reset Players</button></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
+        <div class="alert alert-dark" role="alert">
+            {{current_question.question_title}} <button v-on:click="reveal_question_answer()">Reveal Answer</button>
+            <hr>
+            <div v-for="response in current_question.question_responses">
+                {{response.player_name}}, {{response.player_response}}
+                <hr>
+            </div>
+        </div>
+
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js " integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n " crossorigin="anonymous "></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js " integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo " crossorigin="anonymous "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 " crossorigin="anonymous "></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js " integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js " integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous "></script>
     <!-- Insert vueJs scripts here -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js "></script>
